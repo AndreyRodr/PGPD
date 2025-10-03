@@ -7,7 +7,7 @@ public class SharedList {
 
     public void produce(int value) throws InterruptedException {
         synchronized (this) {
-            // Essa é uma região crítica pois modifica uma lista que é compartilhada com outra thread
+            // Região crítica pois modifica uma lista compartilhada comoutra thread
             int capacity = 5;
             while (list.size() == capacity) {
                 System.out.println("A lista está cheia. O produtor está aguardando...");
@@ -21,7 +21,7 @@ public class SharedList {
 
     public void consume() throws InterruptedException {
         synchronized (this) {
-            // Essa é uma região crítica pois modifica uma lista que é compartilhada com outra thread
+            // Região crítica pois modifica uma lista compartilhada comoutra thread
             while (list.isEmpty()) {
                 System.out.println("A lista está vazia. O consumidor está aguardando...");
                 wait();
@@ -33,3 +33,4 @@ public class SharedList {
         }
     }
 }
+
